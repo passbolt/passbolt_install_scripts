@@ -6,10 +6,33 @@
 # - Creates a tarball under dist/tar/<os>
 # - Checksums tarballs
 
-set -euxo pipefail
+set -euo pipefail
+
+PROGNAME=$0
+
+help_message() {
+  cat <<-EOF
+  usage: $PROGNAME [OPTION] [ARGUMENT]
+
+  OPTIONS:
+    -h                    This help message
+    -d DISTRIBUTION_NAME  Builds for a specific distribution. Supported values centos/debian/ubuntu
+EOF
+}
+
+error() {
+  echo "$1"
+  help_message
+  exit 1
+}
 
 build() {
+  local os=$1
   local output=dist/"$os"/passbolt_"$os"_installer.sh
+
+  if ! [[ "$os" =~ ^(debian|ubuntu|centos)$ ]]; then
+    error "Distribution not supported"
+  fi
 
   mkdir -p dist/"$os"/conf/{nginx,php}
   {
@@ -53,25 +76,21 @@ build() {
   cp "conf/$os/packages.txt" "dist/$os/conf/packages.txt"
 }
 
-os="$1"
-case $os in
-  'debian')
-    $0 clean
-    build
-    ;;
-  'ubuntu')
-    $0 clean
-    build
-    ;;
-  'centos')
-    $0 clean
-    build
-    ;;
-  'clean')
-    rm -rf dist/*
-    ;;
-  *)
-    echo "No such build option"
-    exit 1
-    ;;
-esac
+while getopts "chd:" opt; do
+  case $opt in
+    h)
+      help_message
+      exit 0
+      ;;
+    d)
+      build "$OPTARG"
+      ;;
+    *)
+      error "No such build option"
+      ;;
+  esac
+done
+
+if [ "$OPTIND" -eq 1 ]; then
+  error "Please tell me what to build"
+fi
