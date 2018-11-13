@@ -1,0 +1,12 @@
+php-intl
+php-gd
+php-mysql
+php-pear
+php-dev
+php-mbstring
+php-fpm
+php-gnupg
+git
+nginx
+unzip
+certbot

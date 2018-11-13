@@ -1,0 +1,2 @@
+__config_set ssl_certificate path
+__config_set ssl_auto true

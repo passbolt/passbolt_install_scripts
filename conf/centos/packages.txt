@@ -1,0 +1,16 @@
+php-intl
+php-gd
+php-mysql
+php-mcrypt
+php-pear
+php-devel
+php-mbstring
+php-fpm
+php-ldap
+gcc
+gpgme-devel
+git
+policycoreutils-python
+nginx
+unzip
+wget

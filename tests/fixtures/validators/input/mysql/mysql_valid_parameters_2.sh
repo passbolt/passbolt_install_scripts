@@ -1,0 +1,2 @@
+__config_set mariadb_local_installation true
+__config_set mariadb_name test
