@@ -10,7 +10,7 @@ main(){
   mysql_setup
   setup_fpm
   setup_gpg_keyring
-  passbolt_install 'master'
+  passbolt_install
   setup_nginx
   setup_entropy
   cron_job
