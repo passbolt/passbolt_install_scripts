@@ -52,11 +52,11 @@ The builder script will concat all the code required for your distro in a single
 
 In order to build the passbolt installer please execute the following:
 
-```bash ./build_scripts.sh debian```
+```bash ./build_scripts.sh -d debian```
 
 or
 
-```bash ./build_scripts.sh centos```
+```bash ./build_scripts.sh -d centos```
 
 When the building is done use the scripts from `dist/$distro` to install passbolt on your system.
 ## Development
