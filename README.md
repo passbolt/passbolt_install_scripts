@@ -48,7 +48,7 @@ and build the scripts and use them.
 In order to build the scripts for your operating system we provide a builder script.
 The builder script will concat all the code required for your distro in a single file under:
 
-```dist/$distro/passbolt_pro_$disto_installer.sh```
+```dist/$distro/passbolt_$disto_installer.sh```
 
 In order to build the passbolt installer please execute the following:
 
