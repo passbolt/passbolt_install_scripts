@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+set -euo pipefail
+
+#############################################################
+#                                                           #
+# Passbolt PRO installation script                          #
+#                                                           #
+# Requirements:                                             #
+# This script must be executed with root permissions        #
+#                                                           #
+# Passbolt, the open source password manager for teams      #
+# (c) 2018 Passbolt SARL                                    #
+# https://www.passbolt.com                                  #
+#                                                           #
+#############################################################
