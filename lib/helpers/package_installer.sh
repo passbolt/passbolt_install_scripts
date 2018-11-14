@@ -21,5 +21,9 @@ install_packages() {
   local packages="$1"
 
   installer="$(__installer_command)"
+  if [ "$installer" == "apt-get" ]; then
+    "$installer" update
+  fi
+
   "$installer" -y install $packages
 }
