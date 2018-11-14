@@ -1,5 +1,6 @@
 php-intl
 php-gd
+php-ldap
 php-mysql
 php-pear
 php-dev
