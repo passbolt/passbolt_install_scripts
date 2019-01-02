@@ -6,6 +6,7 @@ main(){
   interactive_prompter
   usermod -d "$WWW_USER_HOME" "$WWW_USER"
   banner 'Installing os dependencies...'
+  setup_sources
   install_packages "$(cat "$script_directory/conf/packages.txt")"
   mysql_setup
   setup_fpm
