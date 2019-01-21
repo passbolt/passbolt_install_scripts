@@ -3,9 +3,9 @@
 composer_check_signature() {
 	EXPECTED_SIGNATURE=$(wget -O - https://composer.github.io/installer.sig)
         wget -O composer-setup.php https://getcomposer.org/installer
-	ACTUAL_SIGNATURE=$(php -r "echo hash_file('SHA384', 'composer-setup.php');")
+	echo "$EXPECTED_SIGNATURE composer-setup.php" | sha384sum -c -
 
-	if [ "$EXPECTED_SIGNATURE" != "$ACTUAL_SIGNATURE" ]
+	if [ "$?" != "0" ]
 	then
 			rm composer-setup.php
 			die 'ERROR: Invalid installer signature'
