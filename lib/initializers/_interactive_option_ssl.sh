@@ -50,7 +50,7 @@ __prompt_ssl(){
     banner "Setting up SSL...
     Do you want to setup a SSL certificate and enable HTTPS now?
     - manual: Prompts for the path of user uploaded ssl certificates and set up nginx
-    - auto:   Will issue a free SSL certificate with https://www.letencrypt.org and set up nginx
+    - auto:   Will issue a free SSL certificate with https://www.letsencrypt.org and set up nginx
     - none:   Do not setup HTTPS at all"
     select opt in "${_options[@]}"; do
       case $opt in
