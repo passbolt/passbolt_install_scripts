@@ -9,7 +9,7 @@ __prompt_entropy_check(){
     banner "On virtualized environments GnuPG happen to find not enough entropy
     to generate a key. Therefore, Passbolt will not run properly.
     Do you want to install Haveged to speed up the entropy generation on
-    your system? Please check https://help.passbolt.com/somepath"
+    your system? Please check https://help.passbolt.com/hosting/install"
 
     select opt in "${options[@]}"; do
       case $opt in
