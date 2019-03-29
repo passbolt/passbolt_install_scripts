@@ -20,6 +20,17 @@ help_message() {
 EOF
 }
 
+checksum() {
+  cd dist/tar/"$1" || exit 1
+  sha512sum passbolt-ce-installer-"$1"-"$2".tar.gz > SHA512SUMS-$1.txt
+  cd -
+}
+
+compress() {
+  mkdir -p dist/tar/"$1"
+  tar cvfz dist/tar/"$1"/passbolt-ce-installer-"$1"-"$2".tar.gz -C dist/"$1" .
+}
+
 error() {
   echo "$1"
   help_message
@@ -28,7 +39,7 @@ error() {
 
 build() {
   local os=$1
-  local output=dist/"$os"/passbolt_"$os"_installer.sh
+  local output=dist/"$os"/passbolt_ce_"$os"_installer.sh
 
   if ! [[ "$os" =~ ^(debian|ubuntu|centos)$ ]]; then
     error "Distribution not supported"
@@ -84,6 +95,14 @@ while getopts "chd:" opt; do
       ;;
     d)
       build "$OPTARG"
+      ;;
+    c)
+      compress debian 9
+      checksum debian 9
+      compress centos 7
+      checksum centos 7
+      compress ubuntu 18.04
+      checksum ubuntu 18.04
       ;;
     *)
       error "No such build option"
