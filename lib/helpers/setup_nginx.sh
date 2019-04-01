@@ -6,6 +6,12 @@ __nginx_config(){
   local nginx_config_file="$2"
   local _config_passbolt_host="$3"
 
+  if grep -q "^[[:space:]]*server_names_hash_bucket_size[[:space:]]*64;" /etc/nginx/nginx.conf; then
+    echo "Server names hash bucket is 64"
+  else
+    sed -i '/^http {/ a\\tserver_names_hash_bucket_size 64;' /etc/nginx/nginx.conf
+  fi
+
   if [ ! -f "$nginx_config_file" ]; then
     cp "$source_template" "$nginx_config_file"
     sed -i s:_SERVER_NAME_:"$(__config_get "$_config_passbolt_host")": "$nginx_config_file"

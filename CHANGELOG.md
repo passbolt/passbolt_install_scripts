@@ -3,7 +3,18 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/passbolt/passbolt_install_scripts/compare/v0.3.0...HEAD)
+## [Unreleased](https://github.com/passbolt/passbolt_install_scripts/compare/v0.3.1...HEAD)
+
+## [0.3.1](https://github.com/passbolt/passbolt_install_scripts/compare/v0.3.1..v0.3.0) - 2019-02-12
+
+### Added
+
+- Build script minor updates
+
+### Fixed
+
+- Increased server_names_hash_bucket_size to 64 [#3](https://github.com/passbolt/passbolt_install_scripts/issues/3)
+- Help site banner on haveged points now to the correct help.passbolt.com URL
 
 ## [0.3.0](https://github.com/passbolt/passbolt_install_scripts/compare/v0.3.0..v0.2.1) - 2019-02-12
 
