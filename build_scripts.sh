@@ -74,6 +74,12 @@ build() {
     done
   fi
 
+  if [ "$os" == "ubuntu" ]; then
+    for helper in lib/helpers/"$os"/*.sh; do
+      cat "$helper" >> "$output";
+    done
+  fi
+
   for helper in lib/helpers/*.sh; do
     cat "$helper" >> "$output";
   done
