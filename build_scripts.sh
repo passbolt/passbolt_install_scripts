@@ -28,7 +28,10 @@ checksum() {
 
 compress() {
   mkdir -p dist/tar/"$1"
-  tar cvfz dist/tar/"$1"/passbolt-ce-installer-"$1"-"$2".tar.gz -C dist/"$1" .
+  cd dist/"$1" || exit 1
+  tar cvfz passbolt-ce-installer-"$1"-"$2".tar.gz *
+  cd -
+  mv dist/"$1"/passbolt-ce-installer-"$1"-"$2".tar.gz dist/tar/"$1"
 }
 
 error() {
@@ -103,8 +106,8 @@ while getopts "chd:" opt; do
       build "$OPTARG"
       ;;
     c)
-      compress debian 9
-      checksum debian 9
+      compress debian 10
+      checksum debian 10
       compress centos 7
       checksum centos 7
       compress ubuntu 18.04
