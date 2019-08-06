@@ -8,5 +8,5 @@ readonly WWW_USER_HOME="/var/lib/nginx"
 readonly GNUPG_HOME='/var/lib/nginx/.gnupg'
 readonly CRONTAB_DIR='/var/spool/cron/'
 readonly REMI_PHP_URL='http://rpms.remirepo.net/enterprise/remi-release-7.rpm'
-readonly REMI_PHP_VERSION='remi-php72'
+readonly REMI_PHP_VERSION='remi-php73'
 readonly PHP_EXT_DIR='/etc/php.d'
