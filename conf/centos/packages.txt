@@ -1,7 +1,6 @@
 php-intl
 php-gd
 php-mysql
-php-mcrypt
 php-pear
 php-devel
 php-mbstring
