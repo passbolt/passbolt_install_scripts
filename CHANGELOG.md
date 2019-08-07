@@ -5,6 +5,15 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/passbolt/passbolt_install_scripts/compare/v0.3.1...HEAD)
 
+## [0.4.0](https://github.com/passbolt/passbolt_install_scripts/compare/v0.4.0..v0.3.2) - 2019-08-07
+
+### Fixed
+- Error on mariadb create syntax [#9](https://github.com/passbolt/passbolt_install_scripts/issues/9)
+- Centos cron error output [#8](https://github.com/passbolt/passbolt_install_scripts/issues/8)
+- Centos selinux errors [#7](https://github.com/passbolt/passbolt_install_scripts/issues/7)
+- Dist tar files break permissions on host [#5](https://github.com/passbolt/passbolt_install_scripts/issues/5)
+- Nginx is not configured for ipv6 [#4](https://github.com/passbolt/passbolt_install_scripts/issues/4)
+
 ## [0.3.2](https://github.com/passbolt/passbolt_install_scripts/compare/v0.3.2..v0.3.1) - 2019-02-12
 
 ### Fixed
