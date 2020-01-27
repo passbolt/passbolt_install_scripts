@@ -16,6 +16,7 @@ main(){
   setup_entropy
   cron_job
   setup_selinux
+  setup_firewall
   installation_complete
 }
 
