@@ -33,7 +33,7 @@ disclaimer() {
        /_/    \__,_/____/____/_,___/\____/_/\__/
 
       The open source password manager for teams
-      (c) 2018 Passbolt SARL
+      (c) 2020 Passbolt SA
       https://www.passbolt.com
 ================================================================
 IMPORTANT NOTE: This installation scripts are for use only

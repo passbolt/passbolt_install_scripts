@@ -6,10 +6,10 @@ __nginx_config(){
   local nginx_config_file="$2"
   local _config_passbolt_host="$3"
 
-  if grep -q "^[[:space:]]*server_names_hash_bucket_size[[:space:]]*64;" /etc/nginx/nginx.conf; then
+  if grep -q "^[[:space:]]*server_names_hash_bucket_size[[:space:]]*64;" "$NGINX_BASE/nginx.conf"; then
     echo "Server names hash bucket is 64"
   else
-    sed -i '/^http {/ a\\tserver_names_hash_bucket_size 64;' /etc/nginx/nginx.conf
+    sed -i '/^http {/ a\\tserver_names_hash_bucket_size 64;' "$NGINX_BASE/nginx.conf"
   fi
 
   if [ ! -f "$nginx_config_file" ]; then
@@ -25,12 +25,13 @@ __ssl_substitutions(){
 
 setup_nginx(){
   local passbolt_domain
+  local nginx_service="${1:-nginx}"
 
   passbolt_domain=$(__config_get 'passbolt_hostname')
   banner "Setting up nginx..."
 
   __nginx_config "$script_directory/conf/nginx/passbolt.conf" "$NGINX_SITE_DIR/passbolt.conf" 'passbolt_hostname'
-  enable_service 'nginx'
+  enable_service "$nginx_service"
 
   if [[ "$(__config_get 'ssl_auto')" == 'true' ]]; then
     if __setup_letsencrypt 'passbolt_hostname' 'letsencrypt_email'; then
@@ -38,7 +39,7 @@ setup_nginx(){
       ln -s "$LETSENCRYPT_LIVE_DIR/$passbolt_domain/cert.pem" "$SSL_CERT_PATH"
       ln -s "$LETSENCRYPT_LIVE_DIR/$passbolt_domain/privkey.pem" "$SSL_KEY_PATH"
       __ssl_substitutions
-      enable_service 'nginx'
+      enable_service "$nginx_service"
     else
       banner "WARNING: Unable to setup SSL using lets encrypt. Please check the install.log"
     fi
@@ -48,6 +49,6 @@ setup_nginx(){
     __nginx_config "$script_directory/conf/nginx/passbolt_ssl.conf" "$NGINX_SITE_DIR/passbolt_ssl.conf" 'passbolt_hostname'
     __copy_ssl_certs 'ssl_certificate' 'ssl_privkey'
     __ssl_substitutions
-    enable_service 'nginx'
+    enable_service "$nginx_service"
   fi
 }

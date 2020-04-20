@@ -10,7 +10,7 @@ set -euo pipefail
 # This script must be executed with root permissions        #
 #                                                           #
 # Passbolt, the open source password manager for teams      #
-# (c) 2018 Passbolt SARL                                    #
+# (c) 2020 Passbolt SA                                    #
 # https://www.passbolt.com                                  #
 #                                                           #
 #############################################################

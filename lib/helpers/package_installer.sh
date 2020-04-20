@@ -7,6 +7,9 @@ __installer_command() {
     'centos')
       _installer=yum
       ;;
+    'redhat')
+      _installer=yum
+      ;;
     *)
       die "Unsupported OS"
       ;;
