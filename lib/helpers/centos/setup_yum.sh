@@ -2,7 +2,7 @@ setup_yum() {
   local os="${1:-centos}"
   case $os in
     centos)
-      install_packages yum-utils epel-release "$REMI_PHP_URL"
+      install_packages "yum-utils epel-release $REMI_PHP_URL"
       yum-config-manager --enable "$REMI_PHP_VERSION"
       ;;
     redhat)
