@@ -16,7 +16,7 @@ help_message() {
 
   OPTIONS:
     -h                    This help message
-    -d DISTRIBUTION_NAME  Builds for a specific distribution. Supported values centos/debian/ubuntu
+    -d DISTRIBUTION_NAME  Builds for a specific distribution. Supported values centos/debian/redhat/ubuntu
 EOF
 }
 
@@ -44,7 +44,7 @@ build() {
   local os=$1
   local output=dist/"$os"/passbolt_ce_"$os"_installer.sh
 
-  if ! [[ "$os" =~ ^(debian|ubuntu|centos)$ ]]; then
+  if ! [[ "$os" =~ ^(debian|ubuntu|centos|redhat)$ ]]; then
     error "Distribution not supported"
   fi
 
@@ -71,7 +71,7 @@ build() {
     cat "$initializer" >> "$output";
   done
 
-  if [ "$os" == "centos" ]; then
+  if [ "$os" == "centos" ] || [ "$os" == "redhat" ]; then
     for helper in lib/helpers/"$os"/*.sh; do
       cat "$helper" >> "$output";
     done
@@ -94,6 +94,11 @@ build() {
   cp conf/nginx/*.conf "dist/$os/conf/nginx"
   cp conf/php/*.conf "dist/$os/conf/php"
   cp "conf/$os/packages.txt" "dist/$os/conf/packages.txt"
+
+  if [ "$os" == "redhat" ]; then
+    sed -i s:-euo:-eo: "$output"
+    sed -i s:/etc/nginx:/etc/opt/rh/rh-nginx116/nginx: "$output"
+  fi
 }
 
 while getopts "chd:" opt; do
@@ -112,6 +117,7 @@ while getopts "chd:" opt; do
       checksum centos 7
       compress ubuntu 18.04
       checksum ubuntu 18.04
+      compress redhat EXPERIMENTAL
       ;;
     *)
       error "No such build option"
