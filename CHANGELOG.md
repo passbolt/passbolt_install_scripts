@@ -3,7 +3,12 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/passbolt/passbolt_install_scripts/compare/v0.4.0...HEAD)
+## [Unreleased](https://github.com/passbolt/passbolt_install_scripts/compare/v0.5.1...HEAD)
+
+## [0.5.1](https://github.com/passbolt/passbolt_install_scripts/compare/v0.5.1..v0.5.0) - 2020-09-25
+
+### Fixed
+- php-fpm incorrect group name for socket communications configuration
 
 ## [0.5.0](https://github.com/passbolt/passbolt_install_scripts/compare/v0.5.0..v0.4.0) - 2020-04-20
 
