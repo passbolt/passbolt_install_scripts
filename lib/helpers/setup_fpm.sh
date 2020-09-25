@@ -6,6 +6,7 @@ setup_fpm(){
 
   cp "$script_directory/conf/php/www.conf" "$FPM_WWW_POOL"
   sed -i s:_WWW_USER_:"$WWW_USER": "$FPM_WWW_POOL"
+  sed -i s:_WWW_GROUP_:"$WWW_GROUP": "$FPM_WWW_POOL"
 
   enable_service "$FPM_SERVICE"
 }
