@@ -5,6 +5,19 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/passbolt/passbolt_install_scripts/compare/v0.5.1...HEAD)
 
+## [0.5.2](https://github.com/passbolt/passbolt_install_scripts/compare/v0.5.2..v0.5.1) - 2020-10-26
+
+This release contains a workaround that pins PHP composer to v1 on the installation.
+Composer will be bumped on the next release.
+
+References:
+- https://github.com/composer/composer/issues/9329
+
+### Fixed
+
+- Pinned composer to version 1. Fixes (#13)[https://github.com/passbolt/passbolt_install_scripts/issues/13]
+
+
 ## [0.5.1](https://github.com/passbolt/passbolt_install_scripts/compare/v0.5.1..v0.5.0) - 2020-09-25
 
 ### Fixed
