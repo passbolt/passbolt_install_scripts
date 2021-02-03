@@ -9,8 +9,9 @@ php-ldap
 gcc
 gpgme-devel
 git
-policycoreutils-python
+policycoreutils-python-utils
 nginx
 unzip
 wget
 certbot
+pinentry

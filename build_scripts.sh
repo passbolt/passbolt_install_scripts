@@ -44,7 +44,7 @@ build() {
   local os=$1
   local output=dist/"$os"/passbolt_ce_"$os"_installer.sh
 
-  if ! [[ "$os" =~ ^(debian|ubuntu|centos|redhat)$ ]]; then
+  if ! [[ "$os" =~ ^(debian|ubuntu|centos7|centos8|redhat)$ ]]; then
     error "Distribution not supported"
   fi
 
@@ -71,12 +71,11 @@ build() {
     cat "$initializer" >> "$output";
   done
 
-  if [ "$os" == "centos" ] || [ "$os" == "redhat" ]; then
+  if [ "$os" == "centos7" ] || [ "$os" == "redhat" ] || [ "$os" == "centos8" ]; then
     for helper in lib/helpers/"$os"/*.sh; do
       cat "$helper" >> "$output";
     done
   fi
-
   if [ "$os" == "ubuntu" ]; then
     for helper in lib/helpers/"$os"/*.sh; do
       cat "$helper" >> "$output";
