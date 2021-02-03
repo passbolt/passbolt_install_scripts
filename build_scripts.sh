@@ -114,6 +114,8 @@ while getopts "chd:" opt; do
       checksum debian 10
       compress centos 7
       checksum centos 7
+      compress centos 8
+      checksum centos 8
       compress ubuntu 18.04
       checksum ubuntu 18.04
       compress redhat EXPERIMENTAL
