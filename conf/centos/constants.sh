@@ -1,5 +1,5 @@
 readonly OS='centos'
-readonly OS_SUPPORTED_VERSION="7.0"
+readonly OS_SUPPORTED_VERSION="8.0"
 readonly OS_VERSION_FILE="/etc/centos-release"
 readonly FPM_WWW_POOL="/etc/php-fpm.d/www.conf"
 readonly FPM_SERVICE="php-fpm"
