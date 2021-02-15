@@ -36,7 +36,7 @@ setup_nginx(){
   if [[ "$(__config_get 'ssl_auto')" == 'true' ]]; then
     if __setup_letsencrypt 'passbolt_hostname' 'letsencrypt_email'; then
       __nginx_config "$script_directory/conf/nginx/passbolt_ssl.conf" "$NGINX_SITE_DIR/passbolt_ssl.conf" 'passbolt_hostname'
-      ln -s "$LETSENCRYPT_LIVE_DIR/$passbolt_domain/cert.pem" "$SSL_CERT_PATH"
+      ln -s "$LETSENCRYPT_LIVE_DIR/$passbolt_domain/fullchain.pem" "$SSL_CERT_PATH"
       ln -s "$LETSENCRYPT_LIVE_DIR/$passbolt_domain/privkey.pem" "$SSL_KEY_PATH"
       __ssl_substitutions
       enable_service "$nginx_service"
