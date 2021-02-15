@@ -73,7 +73,7 @@
 }
 
 @test "it has cron job set up" {
-  sudo grep "* * * * * /var/www/passbolt/bin/cake EmailQueue.sender" /var/spool/cron/nginx
+  sudo grep "* * * * * /var/www/passbolt/bin/cron" /var/spool/cron/nginx
 }
 
 @test "gpg keyring is in place" {
@@ -82,7 +82,7 @@
 }
 
 @test "webinstaller is running" {
-  result="$(curl --header 'Host: passbolt.local' -s -o /dev/null -w "%{http_code}" http://127.0.0.1)"
+  result="$(curl --header 'Host: passbolt.local' -s -o /dev/null -w "%{http_code}" http://127.0.0.1/install)"
   [ "$result" = '200' ]
 }
 
