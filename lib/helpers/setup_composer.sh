@@ -16,7 +16,7 @@ composer_install() {
   local www_user="$1"
   banner "Installing composer..."
 	composer_check_signature
-  php composer-setup.php --1 --install-dir=/usr/bin
+  php composer-setup.php --install-dir=/usr/bin
   php -r "unlink('composer-setup.php');"
 
   banner "Installing composer dependencies..."

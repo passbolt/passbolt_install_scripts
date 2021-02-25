@@ -3,19 +3,28 @@ setup_yum() {
   case $os in
     centos)
       install_packages "yum-utils epel-release $REMI_PHP_URL"
-      yum-config-manager --enable "$REMI_PHP_VERSION"
+      if [ "$OS_SUPPORTED_VERSION" == "7.0" ]; then
+        yum-config-manager --enable "$REMI_PHP_VERSION"
+      else
+        yum-config-manager --enable remi powertools baseos 
+        dnf module enable php:"$REMI_PHP_VERSION"
+      fi
       ;;
     redhat)
       enable_repos
       if ! yum list installed | grep epel-release; then
-        install_packages "https://dl.fedoraproject.org/pub/epel/epel-release-latest-7.noarch.rpm"
+        install_packages "https://dl.fedoraproject.org/pub/epel/epel-release-latest-${RH_VERSION}.noarch.rpm"
       fi
   esac
 }
 
 
 enable_repos() {
-  local repos=(rhel-server-rhscl-7-rpms rhel-7-server-extras-rpms rhel-7-server-optional-rpms)
+  local repos=(
+            "rhel-server-rhscl-${RH_VERSION}-rpms" 
+            "rhel-${RH_VERSION}-server-extras-rpms" 
+            "rhel-${RH_VERSION}-server-optional-rpms"
+          )
   local enabled_repos=""
 
   enabled_repos="$(subscription-manager repos --list-enabled | grep 'Repo ID' | awk '{print $3}')"

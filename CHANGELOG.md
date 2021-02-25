@@ -3,7 +3,23 @@
 All notable changes to this project will be documented in this file.
 This project adheres to [Semantic Versioning](http://semver.org/).
 
-## [Unreleased](https://github.com/passbolt/passbolt_install_scripts/compare/v0.5.1...HEAD)
+## [Unreleased](https://github.com/passbolt/passbolt_install_scripts/compare/v0.6.0...HEAD)
+
+## [0.6.0](https://github.com/passbolt/passbolt_install_scripts/compare/v0.6.0..v0.5.2) - 2021-02-25
+
+This release of the install scripts deprecates the [ubuntu](https://help.passbolt.com/hosting/install/ce/ubuntu/ubuntu.html) and [debian](https://help.passbolt.com/hosting/install/ce/debian/debian.html) installation scripts in favour of the passbolt debian and ubuntu packages.
+From now on this repository aims to support only Centos and RedHat installations.
+
+### Added
+
+- Support for centos8 #16 Thanks to @TheDeadGuy
+
+### Changed
+- Composer installs v2
+- Check firewalld is running before doing changes
+- Nginx SSL config update #15 Thanks to @garretboone
+- Nginx does not include intermediate Letsencrypt certs #17
+
 
 ## [0.5.2](https://github.com/passbolt/passbolt_install_scripts/compare/v0.5.2..v0.5.1) - 2020-10-26
 
