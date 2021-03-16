@@ -110,14 +110,10 @@ while getopts "chd:" opt; do
       build "$OPTARG"
       ;;
     c)
-      compress debian 10
-      checksum debian 10
-      compress centos 7
-      checksum centos 7
-      compress centos 8
-      checksum centos 8
-      compress ubuntu 18.04
-      checksum ubuntu 18.04
+      compress centos7 7
+      checksum centos7 7
+      compress centos8 8
+      checksum centos8 8
       compress redhat EXPERIMENTAL
       ;;
     *)

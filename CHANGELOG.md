@@ -5,6 +5,13 @@ This project adheres to [Semantic Versioning](http://semver.org/).
 
 ## [Unreleased](https://github.com/passbolt/passbolt_install_scripts/compare/v0.6.0...HEAD)
 
+## [0.6.1](https://github.com/passbolt/passbolt_install_scripts/compare/v0.6.1..v0.6.0) - 2021-02-25
+
+This release contains a fix to solve gpg policies on selinux.
+
+### Changed
+- Selinux permissions to httpd to create socket files.
+
 ## [0.6.0](https://github.com/passbolt/passbolt_install_scripts/compare/v0.6.0..v0.5.2) - 2021-02-25
 
 This release of the install scripts deprecates the [ubuntu](https://help.passbolt.com/hosting/install/ce/ubuntu/ubuntu.html) and [debian](https://help.passbolt.com/hosting/install/ce/debian/debian.html) installation scripts in favour of the passbolt debian and ubuntu packages.
